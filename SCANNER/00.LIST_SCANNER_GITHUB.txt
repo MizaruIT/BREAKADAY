@@ -1,0 +1,121 @@
+=> BlueGate (or CVE-2020-0610)
+Use examples:
+1) via CLI
+- python3 bluegate_cve20200610_scanner.py -M check -P $TARGET_PORT $TARGET_IP
+2) via Python import
+- import SCANNER.bluegate_cve20200610_scanner as bluegate_scanner
+- bluegate_scanner.Connection($TARGET_IP, $TARGET_PORT)
+
+=> Eternalblue (or MS17-010)
+Use examples:
+1) via CLI
+- python3 eternalblue_ms17010_scanner.py" -p "$TARGET_PORT" "$IP" 
+- python3 eternalblue_ms17010_scanner.py -p "$TARGET_PORT" "$DOMAIN_NAME"/"$USERNAME":"$PASSWORD"@"$TARGET_IP" 
+2) via Python import
+- import SCANNER.eternalblue_ms17010_scanner as eternalblue_scanner
+- eternalblue_scanner.scan($TARGET_IP, $TARGET_PORT, $USERNAME, $PASSWORD, $NTLM_HASH)
+
+
+=> GPP Abuse
+Use examples:
+1) via CLI
+- python3 getgppcreds_scanner.py "$USERNAME"@"$DC_IP" 
+- python3 getgppcreds_scanner.py "$DOMAIN_NAME"/"$USERNAME"@"$DC_IP" -hashes "$NTLM_HASH"
+2) via Python import
+- import SCANNER.getgppcreds_scanner as gppabuse_scanner
+- gppabuse_scanner.scan(username=$USERNAME, password=$PASSWORD, domain=$DOMAIN_NAME, target_ip=$DC_IP, port=445, lmhash=$LMHASH, nthash=$NTHASH, share="SYSVOL", base_dir="/", aesKey=None, kerberos=None)
+
+
+=> MIC Remove attack (or CVE-2019-1040)
+Use examples:
+1) via CLI
+- python3 micRA_cve20191040_scanner.py -port "$PORT" "$DOMAIN_NAME"/"$USERNAME":"$PASSWORD"@"$TARGET_IP"
+2) via Python import
+- import SCANNER.micRA_cve20191040_scanner as micra_scanner
+- micra_scanner.scan($TARGET_IP, $TARGET_PORT, $USERNAME, $PASSWORD, '', $NTLM_HASH)
+
+=> Netapi (or CVE-2019-1040) / OK
+Use examples:
+1) via CLI
+- python3 netapi_cve20084250_scanner.py "$TARGET_IP" "$PORT"
+2) via Python import
+- import SCANNER.netapi_cve20084250_scanner as netapi_scanner
+- netapi_scanner.scan($TARGET_IP, $TARGET_PORT)
+
+=> Petitpotam / OK
+Use examples:
+1) via CLI
+- python3 petitpotam_scanner.py "$TARGET_IP" "$TARGET_PORT" "$domain_name" "$USERNAME" "$PASSWORD" "$NTLM_HASH"
+2) via Python import
+- import SCANNER.petitpotam_scanner as petitpotam_scanner
+- petitpotam_scanner.scan($USERNAME, $PASSWORD, $DOMAIN_NAME, $LMHASH, $NTHASH, $TARGET_IP, $TARGET_IP, $TARGET_PORT, pipe='lsarpc')
+
+
+=> PrintNightmare (or CVE-2021-1675) / OK
+Use examples:
+1) via CLI
+- python3 printnightmare_cve20211675_scanner.py -check "$USERNAME":"$PASSWORD"@"$TARGET_IP"
+- python3 printnightmare_cve20211675_scanner.py -check "$USERNAME"@"$TARGET_IP" -hashes "$NTLM_HASH"
+2) via Python import
+- import SCANNER.printnightmare_cve20211675_scanner as printnightmare_scanner
+- printnightmare_scanner.scan($TARGET_IP, $TARGET_PORT, $USERNAME, $PASSWORD, $DOMAIN_NAME, $NTLM_HASH, kerberos=False)
+
+=> PrinterBug (or SpoolSample)
+Use examples:
+1) via CLI
+- 
+2) via Python import
+- import SCANNER.rpcdump_scanner as rpcdump_scanner
+- rpcdump_scanner.scan('guest', '', $DOMAIN_NAME, None, $TARGET_IP, $TARGET_PORT) # guest session
+- rpcdump_scanner.scan('', '', $DOMAIN_NAME, None, $TARGET_IP, $TARGET_PORT) # anonymous session
+
+=> sAMAccountName (or CVE-2021-42278) / OK
+Use examples:
+1) via CLI
+- python3 sAMAccountName_cve202142278_scanner.py -dc-host "$DC_HOSTNAME" -scan "$DOMAIN_NAME"/"$USERNAME":"$PASSWORD"
+- python3 sAMAccountName_cve-2021-42278_scanner.py -dc-host "$DC_HOSTNAME" -scan "$DOMAIN_NAME"/"$USERNAME" -hashes "$NTLM_HASH"
+2) via Python import
+- import SCANNER.sAMAccountName_cve202142278_scanner as samaccountspoof_scanner
+- samaccountspoof_scanner.scan($USERNAME, $PASSWORD, $DOMAIN_NAME, $LMHASH, $NTHASH, $DC_HOSTNAME)
+
+
+=> SMBGhost (or CVE-2020-0796)
+Use examples:
+1) via CLI
+- python3 smbghost_cve20200796_scanner.py $TARGET_IP $PORT 
+2) via Python import
+- import SCANNER.smbghost_cve20200796_scanner as smbghost_scanner
+- smbghost_scanner.scanner($TARGET_IP, $TARGET_PORT)
+
+
+=> SMBleed (or CVE-2020-1206)
+Use examples:
+1) via CLI
+- python3 smbleed_cve20201206_scanner.py $TARGET_IP $PORT 
+2) via Python import
+- import SCANNER.smbleed_cve20201206_scanner as smbleed_scanner
+- smbleed_scanner.scan($TARGET_IP, $TARGET_PORT)
+
+=> SMB Signing / OK
+Use examples:
+1) via CLI
+- python3 smbsigning_scanner.py $TARGET_IP $PORT
+2) via Python import
+- import SCANNER.smbsigning_scanner as smbsigning_scanner
+- smbsigning_scanner.scan($TARGET_IP, $TARGET_PORT)
+
+=> ZeroLogon (or CVE-2020-1472) 
+Use examples:
+1) via CLI
+- python3 zerologon_cve20201472_scanner.py "$DC_HOSTNAME" "$DC_IP"
+2) via Python import
+- import SCANNER.smbsigning_scanner as smbsigning_scanner
+- smbsigning_scanner.scan($TARGET_IP, $TARGET_PORT)
+
+
+=> HiveNightmare (or CVE-2021-36934) 
+Some links
+- https://github.com/paragonsec/HiveNightmare-Checker/blob/main/hivechecker.ps1
+Use examples:
+1) via CLI
+- psexec.py ...

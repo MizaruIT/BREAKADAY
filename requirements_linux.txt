@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+# Installing metasploit
+cd ~/Downloads
+sudo apt install curl postgresql postgresql-contrib -y
+curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+chmod 755 msfinstall
+sudo ./msfinstall
+sudo systemctl start postgresql
+msfdb init
+

@@ -21,13 +21,13 @@ In addition of the searching part, the script was made to find new ways of compr
 **I) Command per command**
 1) Clone the repository
 ```sh
-git clone https://github.com/MizaruIT/BREAKADAY;
+git clone https://github.com/MizaruIT/BREAKADAY.git;
 cd BREAKADAY;
 ```
 2) Install the required dependencies
 ```sh
-pip3 install -r requirements.txt;
 bash requirements_linux.txt;
+pip3 install -r requirements.txt;
 ```
 
 3) **(Optional)** To use the script from everywhere, just run the following command
@@ -36,10 +36,10 @@ sudo ln -sf $(pwd)/breakaday.py breakaday
 ```
 **II) All commands in one (copy/paste)**
 ```sh
-git clone https://github.com/MizaruIT/BREAKADAY;
+git clone https://github.com/MizaruIT/BREAKADAY.git;
 cd BREAKADAY;
-pip3 install -r requirements.txt;
 bash linux_requirements.txt;
+pip3 install -r requirements.txt;
 sudo ln -sf $(pwd)/breakaday.py breakaday
 ```
 

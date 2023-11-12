@@ -1,0 +1,1 @@
+scanner_micRA_cve20191040 -port "$PORT" "$DOMAIN_NAME"/"$USERNAME":"$PASSWORD"@"$TARGET_IP"

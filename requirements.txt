@@ -1,3 +1,4 @@
+# For POC & SCANNER
 python-nmap
 pysmb
 dsinternals
@@ -7,4 +8,8 @@ nmap
 pandas
 pyOpenSSL
 impacket
-python-ldap
+chardet
+
+# For BREAKADAY script
+GitPython
+neo4j

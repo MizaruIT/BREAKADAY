@@ -1,4 +1,5 @@
-#!/bin/env python3
+#!/usr/bin/python3
+## OR !/bin/env python3
 '''BLUEGATE SCANNER BY @???'''
 
 import argparse

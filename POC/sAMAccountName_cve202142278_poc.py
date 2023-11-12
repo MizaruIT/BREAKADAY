@@ -1,4 +1,5 @@
-#!/bin/env python3
+#!/usr/bin/python3
+## OR !/bin/env python3
 '''SAMACCOUNTNAME SPOOFING VULNERABILITY POC '''
 from __future__ import division
 from __future__ import print_function

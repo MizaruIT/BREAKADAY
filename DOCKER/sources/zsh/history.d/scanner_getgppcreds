@@ -1,0 +1,2 @@
+scanner_getgppcreds "$USERNAME"@"$DC_IP" 
+scanner_getgppcreds "$DOMAIN_NAME"/"$USERNAME"@"$DC_IP" -hashes "$NTLM_HASH"

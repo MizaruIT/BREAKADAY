@@ -1,0 +1,2 @@
+scanner_sAMAccountName_cve202142278 -dc-host "$DC_HOSTNAME" -scan "$DOMAIN_NAME"/"$USERNAME":"$PASSWORD"
+scanner_sAMAccountName_cve-2021-42278 -dc-host "$DC_HOSTNAME" -scan "$DOMAIN_NAME"/"$USERNAME" -hashes "$NTLM_HASH"

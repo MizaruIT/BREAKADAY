@@ -1,0 +1,1 @@
+scanner_bluegate_cve20200610 -M check -P $TARGET_PORT $TARGET_IP

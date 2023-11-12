@@ -18,6 +18,77 @@ During a penetration test on an Active Directory (AD) infrastructure, it often h
 In addition of the searching part, the script was made to find new ways of compromission. For this, the database Neo4j (and BloodHound) is used to create the paths of compromission from the vulnerable computers. In brief, for each computer vulnerable, a new value "isVulnerableToX" is set. It can be used with cypher queries.
 
 ## 🛠 Installation <a name="installation"/>
+**NEW WAY - Via Docker : AIO**
+
+All the explanations of the Docker installation (creation of the image, run, and launch are described into DOCKER/HowToDocker.txt). You just need to replace the term with a "$".
+
+!!! HOWEVER THE SCRIPT "breakaday.py" IS ONLY EXECUTABLE THROUGH THE DIRECTORY CONTAINING THE FOLDER: SCAN, SCAN_AD & POC.  A CONTRARIO FROM THE BASH VERSION: https://github.com/MizaruIT/BREAKADAY_BASH.
+
+**With detailed explanations**
+```sh
+## Build the image (from the root folder of the project BREAKADAY_BASH)
+docker build -f DOCKER/breakaday.all.dockerfile . -t breakaday_all
+
+## Create the containeur : choose the shared folder from your host, then you can work with it.
+docker run -it -v $/$SHARED_FOLDER_FROM_HOST/:/workspace --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME (here = breakaday_all)
+
+## Once, you want to relaunch it, just find the container with the name specified previously and relaunch it
+# To find the list of containers (running or exited)
+docker container ls -a
+breakaday_all     latest    4c471cffda24   15 hours ago        11.5GB
+
+# Start and execute it (as an example, there the ID would be = 4c471cffda24)
+docker start $ID 
+docker exec -it $ID zsh
+```
+
+**All in one - Create the container (with the name = persistent_breakaday_all) with the shared folder into your current directory**
+```sh
+docker build -f DOCKER/breakaday.all.dockerfile . -t breakaday_all
+docker run -it -v $(pwd):/workspace --name persistent_breakaday_all breakaday_all
+
+# And then to use the script, you must have POC/SCANNER_AD/SCANNER folders into the same directory than the script 
+# Go into the directory created for
+cd /opt/tools/my_scripts/BREAKADAY
+
+# Launch it
+
+```
+
+Once you are into the container, you get access to the scripts and the scanners/PoC tools
+```sh
+# Scanner Tools
+[May 31, 2023 - 20:19:31 (UTC)] 4a7cd65bdc93 /opt/tools/my_scripts/BREAKADAY # scanner_
+scanner_bluegate_cve20200610         scanner_micRA_cve20191040            scanner_printnightmare_cve20211675   scanner_smbleed_cve20201206                
+scanner_eternalblue_ms17010          scanner_netapi_cve20084250           scanner_sAMAccountName_cve202142278  scanner_smbsigning                
+scanner_getgppcreds                  scanner_petitpotam                   scanner_smbghost_cve20200796         scanner_zerologon_cve20201472
+
+# PoC Tools
+[May 31, 2023 - 20:21:10 (UTC)] 4a7cd65bdc93 /opt/tools/my_scripts/BREAKADAY # poc_
+poc_bluegate_cve20200610         poc_netapi_cve20084250           poc_printnightmare_cve20211675   poc_smbghost_cve20200796         
+poc_eternalblue_ms17010          poc_petitpotam                   poc_sAMAccountName_cve202142278  poc_zerologon_cve20201472
+
+# Breakaday script
+[May 31, 2023 - 20:21:47 (UTC)] 4a7cd65bdc93 /opt/tools/my_scripts/BREAKADAY # breakaday 
+ ______   ______ _______ _______ _     _ _______ ______  _______ __   __
+ |_____] |_____/ |______ |_____| |____/  |_____| |     \ |_____|   \_/  
+ |_____] |    \_ |______ |     | |    \_ |     | |_____/ |     |    |   
+                                                                        
+by 
+@MizaruIT on Twitter: wwW.twitter.com/MizaruIT
+@MizaruIT on GitHub: www.github.com/MizaruIT
+
+=> MAIN MENU
+1) Option 1: Scanning network
+2) Option 2: Searching for known vulnerabilities
+3) Option 3: Exploiting vulnerabilities
+4) Option 4: Setting and requesting BloodHound
+5) Option 5: Adding or removing informations (accounts, etc.)
+6) Option 6: Show list of attacks and their details (description, exploitation steps, mitigations, etc.)
+7) Option 7: QUIT
+
+```
+
 **I) Command per command**
 1) Clone the repository
 ```sh

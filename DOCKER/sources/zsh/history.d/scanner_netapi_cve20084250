@@ -1,0 +1,1 @@
+scanner_netapi_cve20084250 "$TARGET_IP" "$PORT"
